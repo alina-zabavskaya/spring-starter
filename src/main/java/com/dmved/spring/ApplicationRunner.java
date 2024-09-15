@@ -7,10 +7,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ApplicationRunner {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application.xml");
-        System.out.println(context.getBean("pool1",ConnectionPool.class));
+        try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application.xml")) {
+            //clazz -> String -> Map<String,Object>
+            System.out.println(context.getBean("pool1", ConnectionPool.class));
 
-        CompanyRepository companyRepository = context.getBean("companyRepository", CompanyRepository.class);
-        System.out.println(companyRepository);
+            CompanyRepository companyRepository = context.getBean("companyRepository", CompanyRepository.class);
+            System.out.println(companyRepository);
+        }
     }
 }
