@@ -18,6 +18,8 @@
     <bean class="com.dmved.spring.bpp.InjectBeanPostProcessor"/>
     <bean class="com.dmved.spring.bfpp.LogBeanFactoryPostProcessor"/>
     <bean class="com.dmved.spring.bfpp.VerifyPropertyBeanFactoryPostProcessor"/>
+    <bean class="com.dmved.spring.bpp.TransactionBeanPostProcessor"/>
+    <bean class="com.dmved.spring.bpp.AuditingBeanPostProcessor"/>
 
     <bean id="driver" class="java.lang.String">
         <constructor-arg type="java.lang.String" value="${db.driver}"/>

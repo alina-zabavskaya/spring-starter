@@ -1,7 +1,7 @@
 package com.dmved.spring;
 
 import com.dmved.spring.database.pool.ConnectionPool;
-import com.dmved.spring.database.repository.CompanyRepository;
+import com.dmved.spring.database.repository.CrudRepository;
 import java.io.Serializable;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -19,8 +19,8 @@ public class ApplicationRunner {
             //clazz -> String -> Map<String,Object>
             System.out.println(context.getBean("pool1", ConnectionPool.class));
 
-            CompanyRepository companyRepository = context.getBean("companyRepository", CompanyRepository.class);
-            System.out.println(companyRepository);
+            var companyRepository = context.getBean("companyRepository", CrudRepository.class);
+            System.out.println(companyRepository.findById(1));
         }
     }
 }
