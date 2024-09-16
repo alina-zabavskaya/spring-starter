@@ -12,21 +12,24 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
+@Repository
 @Transaction
 @Auditing
 public class CompanyRepository implements CrudRepository <Integer, Company> {
 
-//    @Resource(name = "pool1")
-    @Autowired
-//    @Qualifier("pool1")
-    private ConnectionPool pool1;
+    private final ConnectionPool pool1;
+    private final List<ConnectionPool> connectionPools;
+    private final Integer poolSize;
 
-    @Autowired
-    private List<ConnectionPool> connectionPools;
-
-    @Value("${db.pool.size}")
-    private Integer poolSize;
+    public CompanyRepository(ConnectionPool pool1,
+                             List<ConnectionPool> connectionPools,
+                             @Value("${db.pool.size}") Integer poolSize) {
+        this.pool1 = pool1;
+        this.connectionPools = connectionPools;
+        this.poolSize = poolSize;
+    }
 
     @PostConstruct
     private void init(){
