@@ -25,6 +25,7 @@
         <constructor-arg type="java.lang.String" value="${db.driver}"/>
     </bean>
 
+    <bean id="pool2" name="p4" class="com.dmved.spring.database.pool.ConnectionPool"/>
     <bean id="pool1" name="p1,p2,p3" class="com.dmved.spring.database.pool.ConnectionPool">
         <constructor-arg name="username" type="java.lang.String" value="${db.username}"/>
         <constructor-arg name="poolSize" type="java.lang.Integer" value="${db.pool.size}"/>
@@ -52,6 +53,5 @@
             </map>
         </property>
     </bean>
-<!--    <bean id="pool2" name="p4" class="com.dmved.spring.database.pool.ConnectionPool"/>-->
     <bean id="companyRepository" class="com.dmved.spring.database.repository.CompanyRepository"/>
 </beans>

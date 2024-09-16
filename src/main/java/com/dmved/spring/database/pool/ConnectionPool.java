@@ -6,10 +6,13 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 public class ConnectionPool {
-    private final String username;
-    private final Integer poolSize;
-    private final List<Object> args;
+    private  String username;
+    private  Integer poolSize;
+    private  List<Object> args;
     private Map<String, Object> properties;
+
+    public ConnectionPool() {
+    }
 
     public ConnectionPool(String username, Integer poolSize, List<Object> args, Map<String, Object> properties) {
         this.username = username;

@@ -5,15 +5,28 @@ import com.dmved.spring.bpp.InjectBean;
 import com.dmved.spring.bpp.Transaction;
 import com.dmved.spring.database.entity.Company;
 import com.dmved.spring.database.pool.ConnectionPool;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 
 @Transaction
 @Auditing
 public class CompanyRepository implements CrudRepository <Integer, Company> {
 
-    @InjectBean
-    private ConnectionPool connectionPool;
+//    @Resource(name = "pool1")
+    @Autowired
+//    @Qualifier("pool1")
+    private ConnectionPool pool1;
+
+    @Autowired
+    private List<ConnectionPool> connectionPools;
+
+    @Value("${db.pool.size}")
+    private Integer poolSize;
 
     @PostConstruct
     private void init(){
