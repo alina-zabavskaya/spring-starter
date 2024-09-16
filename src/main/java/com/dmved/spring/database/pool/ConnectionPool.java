@@ -2,6 +2,8 @@ package com.dmved.spring.database.pool;
 
 import java.util.List;
 import java.util.Map;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 
 public class ConnectionPool {
     private final String username;
@@ -20,10 +22,12 @@ public class ConnectionPool {
         this.properties = properties;
     }
 
+    @PostConstruct
     private void init() {
         System.out.println("Init connection pool");
     }
 
+    @PreDestroy
     private void destroy() {
         System.out.println("Clean connection pool");
     }
