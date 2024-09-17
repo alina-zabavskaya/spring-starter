@@ -1,10 +1,11 @@
 package com.dmved.spring;
 
+import com.dmved.spring.config.ApplicationConfiguration;
 import com.dmved.spring.database.pool.ConnectionPool;
 import com.dmved.spring.database.repository.CrudRepository;
 import java.io.Serializable;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class ApplicationRunner {
 
@@ -15,7 +16,7 @@ public class ApplicationRunner {
         System.out.println(BeanFactoryPostProcessor.class.isAssignableFrom(value.getClass()));
         System.out.println(Serializable.class.isAssignableFrom(value.getClass()));
 
-        try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application.xml")) {
+        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfiguration.class)) {
             //clazz -> String -> Map<String,Object>
             System.out.println(context.getBean("pool1", ConnectionPool.class));
 
