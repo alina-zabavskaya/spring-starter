@@ -2,7 +2,7 @@ package com.dmved.spring;
 
 import com.dmved.spring.config.ApplicationConfiguration;
 import com.dmved.spring.database.pool.ConnectionPool;
-import com.dmved.spring.database.repository.CrudRepository;
+import com.dmved.spring.service.CompanyService;
 import java.io.Serializable;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -23,8 +23,8 @@ public class ApplicationRunner {
             context.refresh();
             System.out.println(context.getBean("pool1", ConnectionPool.class));
 
-            var companyRepository = context.getBean("companyRepository", CrudRepository.class);
-            System.out.println(companyRepository.findById(1));
+            var companyService = context.getBean(CompanyService.class);
+            System.out.println(companyService.findById(1));
         }
     }
 }
