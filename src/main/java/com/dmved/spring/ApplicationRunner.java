@@ -16,8 +16,11 @@ public class ApplicationRunner {
         System.out.println(BeanFactoryPostProcessor.class.isAssignableFrom(value.getClass()));
         System.out.println(Serializable.class.isAssignableFrom(value.getClass()));
 
-        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfiguration.class)) {
+        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext()) {
             //clazz -> String -> Map<String,Object>
+            context.register(ApplicationConfiguration.class);
+            context.getEnvironment().setActiveProfiles("web", "prod");
+            context.refresh();
             System.out.println(context.getBean("pool1", ConnectionPool.class));
 
             var companyRepository = context.getBean("companyRepository", CrudRepository.class);
