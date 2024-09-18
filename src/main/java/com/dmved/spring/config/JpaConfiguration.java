@@ -9,6 +9,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class JpaConfiguration {
 
+//    @Bean
+//    @ConfigurationProperties(prefix = "db")
+//    DatabaseProperties databaseProperties(){
+//        return new DatabaseProperties();
+//    }
+
     @PostConstruct
     void init(){
         System.out.println("Jpa configuration is enabled");
