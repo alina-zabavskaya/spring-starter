@@ -25,4 +25,4 @@ spring:
 logging:
     level:
         root: warn
-        com.dmved.spring.database.pool.ConnectionPool: info
+        com.dmved.spring.database.pool: info
