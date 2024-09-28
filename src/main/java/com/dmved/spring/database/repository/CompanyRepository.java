@@ -8,11 +8,13 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
+@Slf4j
 @Scope(BeanDefinition.SCOPE_PROTOTYPE)
 @Repository
 @Transaction
@@ -27,17 +29,17 @@ public class CompanyRepository implements CrudRepository <Integer, Company> {
 
     @PostConstruct
     private void init(){
-        System.out.println("init company repository");
+        log.warn("init company repository");
     }
 
     @Override
     public Optional<Company> findById(Integer id) {
-        System.out.println("findById method.....");
+        log.info("findById method.....");
         return Optional.of(new Company(id));
     }
 
     @Override
     public void delete(Company entity) {
-        System.out.println("delete method......");
+        log.info("delete method......");
     }
 }
