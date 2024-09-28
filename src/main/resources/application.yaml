@@ -24,5 +24,9 @@ spring:
 
 logging:
     level:
-        root: warn
-        com.dmved.spring.database.pool: info
+        root: WARN
+        com.dmved.spring.database.pool: INFO
+    file:
+        name: application.log
+        path: /
+
