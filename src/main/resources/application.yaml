@@ -9,8 +9,8 @@ db:
         second : 567
         third.value : Third
     pool:
-        size:12
-        timeout:10
+        size: 12
+        timeout: 10
     pools:
         - size: 1
           timeout: 1
