@@ -13,7 +13,6 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 @IT
 @RequiredArgsConstructor
-//@Transactional
 //@Commit
 class CompanyRepositoryTest {
 
