@@ -1,7 +1,7 @@
 package com.dmved.spring.integration.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import com.dmved.spring.database.entity.Company;
 import com.dmved.spring.integration.annatation.IT;
@@ -9,13 +9,12 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 @IT
 @RequiredArgsConstructor
 @Transactional
-@Commit
+//@Commit
 class CompanyRepositoryTest {
 
     private final EntityManager entityManager;
