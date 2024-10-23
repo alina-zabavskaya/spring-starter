@@ -11,6 +11,7 @@ import com.dmved.spring.database.entity.Company;
 import com.dmved.spring.database.repository.CrudRepository;
 import com.dmved.spring.dto.CompanyReadDto;
 import com.dmved.spring.listener.entity.EntityEvent;
+import java.util.Collections;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -36,7 +37,7 @@ class CompanyServiceTest {
 
     @Test
     void findById() {
-        doReturn(Optional.of(new Company(COMPANY_ID)))
+        doReturn(Optional.of(new Company(COMPANY_ID, null, Collections.EMPTY_MAP)))
                 .when(companyRepository).findById(COMPANY_ID);
 
         var actualResult = companyService.findById(COMPANY_ID);
