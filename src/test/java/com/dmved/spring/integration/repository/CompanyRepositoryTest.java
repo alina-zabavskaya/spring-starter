@@ -9,21 +9,24 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionTemplate;
 
 @IT
 @RequiredArgsConstructor
-@Transactional
+//@Transactional
 //@Commit
 class CompanyRepositoryTest {
 
     private final EntityManager entityManager;
+    private final TransactionTemplate transactionTemplate;
 
     @Test
     void findById() {
-        Company company = entityManager.find(Company.class, 1);
-        assertNotNull(company);
-        assertThat(company.getLocales()).hasSize(2);
+        transactionTemplate.executeWithoutResult(tx ->{
+            Company company = entityManager.find(Company.class, 1);
+            assertNotNull(company);
+            assertThat(company.getLocales()).hasSize(2);
+        });
     }
 
     @Test
